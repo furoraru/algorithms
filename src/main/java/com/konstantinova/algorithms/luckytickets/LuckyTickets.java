@@ -1,5 +1,9 @@
 package com.konstantinova.algorithms.luckytickets;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  * ЗАДАНИЕ
  * Счастливые билеты
@@ -31,8 +35,24 @@ public class LuckyTickets {
 
     /*
      * УРОВЕНЬ MIDDLE
-     * Прочитать условие задачи \1.Tickets\problem.txt
-     * Решить задачу в общем случае и протестировать вручную на тестах, которые находятся в ресурсах.
+     * Прочитать условие задачи \src\main\resources\luckytickets\problem.txt
+     * Решить задачу в общем случае и протестировать вручную на тестах, которые находятся в ресурсах.*/
+    public long middleTicket() {
+        int N = 0;
+        FileReader fileReader;
+        BufferedReader bufferedReader;
+        try {
+            fileReader = new FileReader("src/main/resources/luckytickets/test.0.in");
+            bufferedReader = new BufferedReader(fileReader);
+            N = Integer.parseInt(bufferedReader.readLine());
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+        System.out.println("N = " + N);
+
+        return 1L;
+    }
+    /*
      * УРОВЕНЬ SENIOR
      * Создать систему тестирования на основе файлов.
      * Проверить работу программы в автоматическом режиме.
