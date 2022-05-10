@@ -7,12 +7,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
+/*
  * ЗАДАНИЕ
- * Счастливые билеты
+ * Счастливые билеты 20
+ *
+ * Билет с 2N значным номером считается счастливым,
+ * если сумма N первых цифр равна сумме последних N цифр.
+ * Посчитать, сколько существует счастливых 2N-значных билетов.
+ *
+ * Начальные данные: число N от 1 до 10.
+ * Вывод результата: количество 2N-значных счастливых билетов.
  */
 public class LuckyTickets {
-    /**
+    // Количество разрядов
+    private static final int DIGITS = 9;
+
+    /*
      * УРОВЕНЬ JUNIOR
      * 6-значный билет считается счастливым,
      * если сумма 3 первых цифр равна сумме последних 3 цифр.
@@ -22,17 +32,18 @@ public class LuckyTickets {
         int sumFirst;
         int sumSecond;
         long countOfSums = 0;
-        for (int a1 = 0; a1 < 10; a1++)
-            for (int a2 = 0; a2 < 10; a2++)
-                for (int a3 = 0; a3 < 10; a3++) {
+        for (int a1 = 0; a1 <= DIGITS; a1++)
+            for (int a2 = 0; a2 <= DIGITS; a2++)
+                for (int a3 = 0; a3 <= DIGITS; a3++) {
                     sumFirst = a1 + a2 + a3;
-                    for (int b1 = 0; b1 < 10; b1++)
-                        for (int b2 = 0; b2 < 10; b2++)
-                            for (int b3 = 0; b3 < 10; b3++) {
+                    for (int b1 = 0; b1 <= DIGITS; b1++)
+                        for (int b2 = 0; b2 <= DIGITS; b2++)
+                            for (int b3 = 0; b3 <= DIGITS; b3++) {
                                 sumSecond = b1 + b2 + b3;
                                 if (sumFirst == sumSecond) countOfSums++;
                             }
                 }
+        System.out.println("My result = " + countOfSums);
         return countOfSums;
     }
 
@@ -45,33 +56,43 @@ public class LuckyTickets {
         int N = 0;
         FileReader fileReader;
         BufferedReader bufferedReader;
+        long trueResult = 0L;
         try {
-            fileReader = new FileReader("src/main/resources/luckytickets/test.7.in");
+            fileReader = new FileReader("src/main/resources/luckytickets/test.0.in");
             bufferedReader = new BufferedReader(fileReader);
             N = Integer.parseInt(bufferedReader.readLine());
+
+            fileReader = new FileReader("src/main/resources/luckytickets/test.0.out");
+            bufferedReader = new BufferedReader(fileReader);
+            trueResult = Long.parseLong(bufferedReader.readLine());
         } catch (IOException exception) {
             exception.printStackTrace();
         }
 
+        // Количество разрядов из файла
         System.out.println("N = " + N);
 
-        long[][] sumTable = new long[9 + 1][9 * N + 1];
-        for (int row = 0; row <= 9; row++) {
-            for (int column = 0; column <= 9 * N; column++) {
+        // Заполнение таблицы начальными данными для случая с 1 разрядом
+        long[][] sumTable = new long[DIGITS + 1][DIGITS * N + 1];
+        for (int row = 0; row <= DIGITS; row++) {
+            for (int column = 0; column <= DIGITS * N; column++) {
                 if (row == column) sumTable[row][column] = 1;
                 else sumTable[row][column] = 0;
             }
         }
 
-        List<Long> newStepSum = new ArrayList<>(Collections.nCopies(9 * 1 + 1, 1L));
+        // Заполнение сумм для случая с 1 разрядом
+        List<Long> newStepSum = new ArrayList<>(Collections.nCopies(DIGITS + 1, 1L));
         List<Long> lastStepSum;
 
         for (int n = 2; n <= N; n++) {
+            // Переопределение сумм
             lastStepSum = new ArrayList<>(newStepSum);
-            newStepSum = new ArrayList<>(Collections.nCopies(9 * n + 1, 0L));
+            newStepSum = new ArrayList<>(Collections.nCopies(DIGITS * n + 1, 0L));
 
-            for (int row = 0; row <= 9; row++) {
-                for (int column = row; column <= row + 9 * (n - 1); column++) {
+            // Сдвиг сумм в таблице
+            for (int row = 0; row <= DIGITS; row++) {
+                for (int column = row; column <= row + DIGITS * (n - 1); column++) {
                     sumTable[row][column] = lastStepSum.get(column - row);
                     newStepSum.set(column, newStepSum.get(column) + sumTable[row][column]);
                 }
@@ -79,17 +100,9 @@ public class LuckyTickets {
         }
 
         long result = 0L;
-        for (int i = 0; i <= 9 * N; i++) {
+        // Сумма квадратов
+        for (int i = 0; i <= DIGITS * N; i++) {
             result += newStepSum.get(i) * newStepSum.get(i);
-        }
-
-        long trueResult = 0L;
-        try {
-            fileReader = new FileReader("src/main/resources/luckytickets/test.7.out");
-            bufferedReader = new BufferedReader(fileReader);
-            trueResult = Long.parseLong(bufferedReader.readLine());
-        } catch (IOException exception) {
-            exception.printStackTrace();
         }
 
         System.out.println("My  result = " + result);
