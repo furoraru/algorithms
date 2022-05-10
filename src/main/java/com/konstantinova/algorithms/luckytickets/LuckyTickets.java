@@ -58,11 +58,11 @@ public class LuckyTickets {
         BufferedReader bufferedReader;
         long trueResult = 0L;
         try {
-            fileReader = new FileReader("src/main/resources/luckytickets/test.0.in");
+            fileReader = new FileReader("src/main/resources/luckytickets/test.9.in");
             bufferedReader = new BufferedReader(fileReader);
             N = Integer.parseInt(bufferedReader.readLine());
 
-            fileReader = new FileReader("src/main/resources/luckytickets/test.0.out");
+            fileReader = new FileReader("src/main/resources/luckytickets/test.9.out");
             bufferedReader = new BufferedReader(fileReader);
             trueResult = Long.parseLong(bufferedReader.readLine());
         } catch (IOException exception) {
@@ -72,6 +72,25 @@ public class LuckyTickets {
         // Количество разрядов из файла
         System.out.println("N = " + N);
 
+        long result = computeLuckyTickets(N);
+
+        System.out.println("My  result = " + result);
+        System.out.println("Out result = " + trueResult);
+        System.out.println("Is the same: " + (result == trueResult));
+
+        return result;
+    }
+
+    /*
+     * УРОВЕНЬ SENIOR
+     * Создать систему тестирования на основе файлов.
+     * Проверить работу программы в автоматическом режиме.
+     */
+    public long seniorTicket(int N) {
+        return computeLuckyTickets(N);
+    }
+
+    private long computeLuckyTickets(int N) {
         // Заполнение таблицы начальными данными для случая с 1 разрядом
         long[][] sumTable = new long[DIGITS + 1][DIGITS * N + 1];
         for (int row = 0; row <= DIGITS; row++) {
@@ -105,16 +124,6 @@ public class LuckyTickets {
             result += newStepSum.get(i) * newStepSum.get(i);
         }
 
-        System.out.println("My  result = " + result);
-        System.out.println("Out result = " + trueResult);
-        System.out.println("Is the same: " + (result == trueResult));
-
         return result;
     }
-
-    /*
-     * УРОВЕНЬ SENIOR
-     * Создать систему тестирования на основе файлов.
-     * Проверить работу программы в автоматическом режиме.
-     */
 }
