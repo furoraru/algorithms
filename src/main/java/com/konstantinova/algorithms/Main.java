@@ -6,6 +6,6 @@ public class Main {
     public static void main(String[] args) {
         //System.out.println("hi, my name is Veroshka");
         LuckyTickets luckyTickets = new LuckyTickets();
-        System.out.println(luckyTickets.middleTicket());
+        luckyTickets.middleTicket();
     }
 }

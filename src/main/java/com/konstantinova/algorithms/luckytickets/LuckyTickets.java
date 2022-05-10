@@ -46,7 +46,7 @@ public class LuckyTickets {
         FileReader fileReader;
         BufferedReader bufferedReader;
         try {
-            fileReader = new FileReader("src/main/resources/luckytickets/test.8.in");
+            fileReader = new FileReader("src/main/resources/luckytickets/test.7.in");
             bufferedReader = new BufferedReader(fileReader);
             N = Integer.parseInt(bufferedReader.readLine());
         } catch (IOException exception) {
@@ -78,10 +78,23 @@ public class LuckyTickets {
             }
         }
 
-        long result = 0;
+        long result = 0L;
         for (int i = 0; i <= 9 * N; i++) {
-            result += (long) Math.pow(newStepSum.get(i), 2);
+            result += newStepSum.get(i) * newStepSum.get(i);
         }
+
+        long trueResult = 0L;
+        try {
+            fileReader = new FileReader("src/main/resources/luckytickets/test.7.out");
+            bufferedReader = new BufferedReader(fileReader);
+            trueResult = Long.parseLong(bufferedReader.readLine());
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+
+        System.out.println("My  result = " + result);
+        System.out.println("Out result = " + trueResult);
+        System.out.println("Is the same: " + (result == trueResult));
 
         return result;
     }
