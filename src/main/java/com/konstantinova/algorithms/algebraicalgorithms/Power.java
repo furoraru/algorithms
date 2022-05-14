@@ -12,7 +12,7 @@ public class Power {
     /*
     Итеративный O(N) алгоритм возведения числа в степень
      */
-    public double juniorPower(double a, long n) {
+    public double iteratingPower(double a, long n) {
         System.out.println("A = " + a + "\nN = " + n);
         double result = 1.0;
         if (n == 0) {
