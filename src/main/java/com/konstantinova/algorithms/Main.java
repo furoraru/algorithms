@@ -1,10 +1,10 @@
 package com.konstantinova.algorithms;
 
-import com.konstantinova.algorithms.luckytickets.LuckyTickets;
+import com.konstantinova.algorithms.algebraicalgorithms.Power;
 
 public class Main {
     public static void main(String[] args) {
-        LuckyTickets luckyTickets = new LuckyTickets();
-        luckyTickets.middleTicket();
+        Power power = new Power();
+        power.juniorPower(1.0000000001, 10000000000L);
     }
 }
