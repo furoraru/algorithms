@@ -39,4 +39,18 @@ public class Power {
         }
         return a;
     }
+
+    /*
+    Через двоичное разложение показателя степени O(2LogN) = O(LogN)
+     */
+    public double binaryDecomposition(double a, long n) {
+        double result = 1.0;
+        for (long power = n; power > 0 ; power /= 2) {
+            if (power % 2 == 1) {
+                result *= a;
+            }
+            a *= a;
+        }
+        return result;
+    }
 }
