@@ -13,17 +13,30 @@ public class Power {
     Итеративный O(N) алгоритм возведения числа в степень
      */
     public double iteratingPower(double a, long n) {
-        System.out.println("A = " + a + "\nN = " + n);
-        double result = 1.0;
-        if (n == 0) {
-            System.out.println(result);
-            return result;
-        }
-        result = a;
-        for (long power = 2; power <= n; power++) {
+        double result = 1.0; // A^0
+        for (long power = 1; power <= n; power++) {
             result *= a;
         }
-        System.out.println(result);
         return result;
+    }
+
+    /*
+    Через домножение O(N/2+LogN) = O(N).
+     */
+    public double multiplicationPower(double a, long n) {
+        if (n == 0) return 1.0;
+        if (n == 1) return a;
+
+        double a1 = a;
+        long power = 2L;
+        for (; power <= n / 2; power *= 2) {
+            a *= a; // a^2 a^4 a^8 ...
+        }
+        a *= a;
+        power += 1;
+        for (; power <= n; power++) {
+            a *= a1;
+        }
+        return a;
     }
 }
