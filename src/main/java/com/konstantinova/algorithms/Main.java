@@ -1,11 +1,11 @@
 package com.konstantinova.algorithms;
 
-import com.konstantinova.algorithms.algebraicalgorithms.Power;
+import com.konstantinova.algorithms.algebraicalgorithms.Fibo;
 
 public class Main {
     public static void main(String[] args) {
-        Power power = new Power();
-        System.out.println(power.iteratingPower(1.0000000001, 10000000000L));
-        System.out.println(power.binaryDecomposition(1.0000000001, 10000000000L));
+        Fibo fibo = new Fibo();
+        System.out.println(fibo.iteratingFibo(10));
+        System.out.println(fibo.goldenRatioFibo(10));
     }
 }

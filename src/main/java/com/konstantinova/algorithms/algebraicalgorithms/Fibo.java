@@ -1,6 +1,8 @@
 package com.konstantinova.algorithms.algebraicalgorithms;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 
 /*
 Найти и вывести на экран точное значение N-ого числа Фибоначчи.
@@ -36,5 +38,17 @@ public class Fibo {
             fib2 = fib.add(fib1);
         }
         return fib;
+    }
+
+    /*
+    Золотое сечение
+    */
+    public BigInteger goldenRatioFibo(int n) {
+        if (n == 0) return BigInteger.valueOf(0);
+        double rootOfFive = Math.pow(5, 0.5);
+        BigDecimal ratio = BigDecimal.valueOf((1 + rootOfFive) / 2).pow(n);
+        BigDecimal goldenDivision = ratio.divide(BigDecimal.valueOf(rootOfFive), 2, RoundingMode.HALF_UP);
+        BigDecimal goldenSum = goldenDivision.add(new BigDecimal(0.5));
+        return goldenSum.toBigInteger();
     }
 }
