@@ -1,4 +1,4 @@
-package com.konstantinova.algorithms.algebraicalgorithms;
+package com.konstantinova.algorithms.algebraicalgorithms.fibonacci;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -50,5 +50,22 @@ public class Fibo {
         BigDecimal goldenDivision = ratio.divide(BigDecimal.valueOf(rootOfFive), 2, RoundingMode.HALF_UP);
         BigDecimal goldenSum = goldenDivision.add(new BigDecimal(0.5));
         return goldenSum.toBigInteger();
+    }
+
+    /*
+    Умножение матриц
+     */
+    public BigInteger matrixMultiplicationFibo(int n) {
+        if (n == 0) return BigInteger.valueOf(0L);
+
+        Matrix2D base = Matrix2D.BASE;
+        Matrix2D result = Matrix2D.IDENTITY;
+        for (int power = n - 1; power > 0; power /= 2) {
+            if (power % 2 == 1) {
+                result = result.multiply(base);
+            }
+            base = base.multiply(base);
+        }
+        return result.getX11();
     }
 }
