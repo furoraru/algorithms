@@ -1,6 +1,8 @@
 package com.konstantinova.algorithms.algebraicalgorithms;
 
-import java.util.ArrayList;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /*
 Найти количество простых чисел от 1 до N.
@@ -35,25 +37,61 @@ public class Primes {
     /*
       Оптимизация поиска с делением только на простые числа, O(N * Sqrt(N) / Ln (N)).
      */
-    public long divisionByPrimes(long n) {
+    public long divisionByPrimes(int n) {
         if (n == 1) return 0;
-        ArrayList<Long> primes = new ArrayList<>();
+        int[] primes = new int[n / 2 + 1];
         int countOfPrimes = 0;
-        primes.add(countOfPrimes, 2L);
+        primes[countOfPrimes] = 2;
         countOfPrimes++;
-        for (long prime = 3; prime <= n; prime++)
+        for (int prime = 3; prime <= n; prime++)
             if (isPrimeDivisionByPrimes(prime, primes)) {
-                primes.add(countOfPrimes, prime);
+                primes[countOfPrimes] = prime;
                 countOfPrimes++;
             }
         return countOfPrimes;
     }
 
-    private boolean isPrimeDivisionByPrimes(long n, ArrayList<Long> primes) {
-        long sqrtN = (long) Math.sqrt(n);
-        for (int i = 0; primes.get(i) <= sqrtN; i++)
-            if (n % primes.get(i) == 0)
+    private boolean isPrimeDivisionByPrimes(int n, int[] primes) {
+        int sqrtN = (int) Math.sqrt(n);
+        for (int i = 0; primes[i] <= sqrtN; i++)
+            if (n % primes[i] == 0)
                 return false;
         return true;
+    }
+
+    /*
+    Решето Эратосфена для быстрого поиска простых чисел O(N Log Log N)
+     */
+    public long eratosthenes(int n) {
+        if (n == 1) return 0;
+
+        int[] a = new int[n + 1];
+        // заполняем массив всеми числами
+        for (int i = 0; i <= n; i++) {
+            a[i] = i;
+        }
+
+        a[1] = 0;
+
+        int i = 2;
+        int p;
+        // сначала вычеркиваем числа 2p, 3p.. потом берем первое незачеркнутое и повторяем вычеркивание
+        while (i <= n) {
+            if (a[i] != 0) {
+                p = i + i;
+                while (p <= n) {
+                    a[p] = 0;
+                    p += i;
+                }
+            }
+            i += 1;
+        }
+
+        // убираем повторяющиеся нули
+        Set<Integer> set = IntStream.of(a).boxed().collect(Collectors.toSet());
+        // убираем последний нуль
+        set.remove(0);
+
+        return set.size();
     }
 }
