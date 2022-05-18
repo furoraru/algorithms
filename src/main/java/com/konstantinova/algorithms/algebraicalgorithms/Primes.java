@@ -1,5 +1,7 @@
 package com.konstantinova.algorithms.algebraicalgorithms;
 
+import java.util.ArrayList;
+
 /*
 Найти количество простых чисел от 1 до N.
 
@@ -17,16 +19,41 @@ public class Primes {
     public long enumerationOfDivisors(long n) {
         long countOfPrimes = 0;
         for (int i = 1; i <= n; i++) {
-            if (isPrime(i)) countOfPrimes++;
+            if (isPrimeEnumerationOfDivisors(i)) countOfPrimes++;
         }
         return countOfPrimes;
     }
 
-    private boolean isPrime(long n) {
+    private boolean isPrimeEnumerationOfDivisors(long n) {
         int countOfDivisors = 0;
         for (int i = 1; i <= n; i++) {
             if (n % i == 0) countOfDivisors++;
         }
         return countOfDivisors == 2;
+    }
+
+    /*
+      Оптимизация поиска с делением только на простые числа, O(N * Sqrt(N) / Ln (N)).
+     */
+    public long divisionByPrimes(long n) {
+        if (n == 1) return 0;
+        ArrayList<Long> primes = new ArrayList<>();
+        int countOfPrimes = 0;
+        primes.add(countOfPrimes, 2L);
+        countOfPrimes++;
+        for (long prime = 3; prime <= n; prime++)
+            if (isPrimeDivisionByPrimes(prime, primes)) {
+                primes.add(countOfPrimes, prime);
+                countOfPrimes++;
+            }
+        return countOfPrimes;
+    }
+
+    private boolean isPrimeDivisionByPrimes(long n, ArrayList<Long> primes) {
+        long sqrtN = (long) Math.sqrt(n);
+        for (int i = 0; primes.get(i) <= sqrtN; i++)
+            if (n % primes.get(i) == 0)
+                return false;
+        return true;
     }
 }
