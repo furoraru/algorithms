@@ -7,10 +7,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.text.DecimalFormat;
 import java.time.Duration;
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class AlgebraicAlgorithmsTest {
     private static final String pathFibo = "src/main/resources/algebraicalgorithms/fibo/test.";
@@ -21,16 +20,16 @@ public class AlgebraicAlgorithmsTest {
     public void RunTests() {
         String inFile;
         String outFile;
-        for (int testNumber = 0; testNumber <= 12; testNumber++) {
-            inFile = pathFibo + testNumber + ".in";
-            outFile = pathFibo + testNumber + ".out";
-            System.out.println("Test Fibonacci #" + testNumber + ": " + RunTestFibo(inFile, outFile));
-        }
-//        for (int testNumber = 0; testNumber <= 9; testNumber++) {
-//            inFile = pathPower + testNumber + ".in";
-//            outFile = pathPower + testNumber + ".out";
-//            System.out.println("Test Power #" + testNumber + ": " + RunTestPower(inFile, outFile));
+//        for (int testNumber = 0; testNumber <= 12; testNumber++) {
+//            inFile = pathFibo + testNumber + ".in";
+//            outFile = pathFibo + testNumber + ".out";
+//            System.out.println("Test Fibonacci #" + testNumber + ": " + RunTestFibo(inFile, outFile));
 //        }
+        for (int testNumber = 0; testNumber <= 9; testNumber++) {
+            inFile = pathPower + testNumber + ".in";
+            outFile = pathPower + testNumber + ".out";
+            System.out.println("Test Power #" + testNumber + ": " + RunTestPower(inFile, outFile));
+        }
 //        for (int testNumber = 0; testNumber <= 14; testNumber++) {
 //            inFile = pathPrimes + testNumber + ".in";
 //            outFile = pathPrimes + testNumber + ".out";
@@ -55,8 +54,8 @@ public class AlgebraicAlgorithmsTest {
 
             startTime = Instant.now();
             BigInteger actual = fibo.matrixMultiplicationFibo(data);
-
             System.out.println("\nTime fibo: " + Duration.between(startTime, Instant.now()).toMillis() + "ms");
+
             return expect.equals(actual);
         } catch (IOException exception) {
             exception.printStackTrace();
@@ -69,18 +68,23 @@ public class AlgebraicAlgorithmsTest {
 
         FileReader fileReader;
         BufferedReader bufferedReader;
+        Instant startTime;
+        DecimalFormat df = new DecimalFormat("#.0000000");
         try {
             fileReader = new FileReader(inFile);
             bufferedReader = new BufferedReader(fileReader);
             double a = Double.parseDouble(bufferedReader.readLine());
-            int n = Integer.parseInt(bufferedReader.readLine());
+            long n = Long.parseLong(bufferedReader.readLine());
 
             fileReader = new FileReader(outFile);
             bufferedReader = new BufferedReader(fileReader);
             double expect = Double.parseDouble(bufferedReader.readLine());
 
-            double actual = power.iteratingPower(a, n);
-            return expect == actual;
+            startTime = Instant.now();
+            double actual = power.binaryDecomposition(a, n);
+            System.out.println("\nTime power: " + Duration.between(startTime, Instant.now()).toMillis() + "ms");
+
+            return df.format(expect).equals(df.format(actual));
         } catch (IOException exception) {
             exception.printStackTrace();
         }
