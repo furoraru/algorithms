@@ -20,21 +20,21 @@ public class AlgebraicAlgorithmsTest {
     public void RunTests() {
         String inFile;
         String outFile;
-//        for (int testNumber = 0; testNumber <= 12; testNumber++) {
-//            inFile = pathFibo + testNumber + ".in";
-//            outFile = pathFibo + testNumber + ".out";
-//            System.out.println("Test Fibonacci #" + testNumber + ": " + RunTestFibo(inFile, outFile));
-//        }
+        for (int testNumber = 0; testNumber <= 12; testNumber++) {
+            inFile = pathFibo + testNumber + ".in";
+            outFile = pathFibo + testNumber + ".out";
+            System.out.println("Test Fibonacci #" + testNumber + ": " + RunTestFibo(inFile, outFile));
+        }
         for (int testNumber = 0; testNumber <= 9; testNumber++) {
             inFile = pathPower + testNumber + ".in";
             outFile = pathPower + testNumber + ".out";
             System.out.println("Test Power #" + testNumber + ": " + RunTestPower(inFile, outFile));
         }
-//        for (int testNumber = 0; testNumber <= 14; testNumber++) {
-//            inFile = pathPrimes + testNumber + ".in";
-//            outFile = pathPrimes + testNumber + ".out";
-//            System.out.println("Test Primes #" + testNumber + ": " + RunTestPrimes(inFile, outFile));
-//        }
+        for (int testNumber = 0; testNumber <= 14; testNumber++) {
+            inFile = pathPrimes + testNumber + ".in";
+            outFile = pathPrimes + testNumber + ".out";
+            System.out.println("Test Primes #" + testNumber + ": " + RunTestPrimes(inFile, outFile));
+        }
     }
 
     private boolean RunTestFibo(String inFile, String outFile) {
@@ -96,6 +96,7 @@ public class AlgebraicAlgorithmsTest {
 
         FileReader fileReader;
         BufferedReader bufferedReader;
+        Instant startTime;
         try {
             fileReader = new FileReader(inFile);
             bufferedReader = new BufferedReader(fileReader);
@@ -105,7 +106,10 @@ public class AlgebraicAlgorithmsTest {
             bufferedReader = new BufferedReader(fileReader);
             long expect = Long.parseLong(bufferedReader.readLine());
 
-            long actual = primes.enumerationOfDivisors(data);
+            startTime = Instant.now();
+            long actual = primes.eratosthenes(data);
+            System.out.println("\nTime primes: " + Duration.between(startTime, Instant.now()).toMillis() + "ms");
+
             return expect == actual;
         } catch (IOException exception) {
             exception.printStackTrace();
