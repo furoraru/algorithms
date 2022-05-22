@@ -46,7 +46,7 @@ public class King {
         BigInteger bitmask =
                         notABitboard.shiftLeft(7).  or(bitboard.shiftLeft(8))   .or(notHBitboard.shiftLeft(9)).or(
                         notABitboard.shiftRight(1))                                .or(notHBitboard.shiftLeft(1)).or(
-                        notABitboard.shiftRight(7)).or(bitboard.shiftRight(8))  .or(notHBitboard.shiftRight(9));
+                        notABitboard.shiftRight(9)).or(bitboard.shiftRight(8))  .or(notHBitboard.shiftRight(7));
 
 //        long bitmask =
 //                        notABitboard << 7 | bitboard << 8 | notHBitboard << 9 |
