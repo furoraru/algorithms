@@ -1,11 +1,10 @@
 package com.konstantinova.algorithms;
 
-import com.konstantinova.algorithms.algebraicalgorithms.Primes;
+import com.konstantinova.algorithms.bitwisearithmetic.King;
 
 public class Main {
     public static void main(String[] args) {
-        Primes primes = new Primes();
-        System.out.println(primes.divisionByPrimes(100000000));
-        System.out.println(primes.eratosthenes(100000000));
+        King king = new King();
+        System.out.println(king.bitmaskOfPossibleMoves(15));
     }
 }
