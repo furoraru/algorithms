@@ -9,4 +9,13 @@ public class NumberOfPossibleMoves {
         }
         return count;
     }
+
+    public int popCount2(long bitmask) {
+        int count = 0;
+        while (bitmask > 0) {
+            count++;
+            bitmask &= bitmask - 1;
+        }
+        return count;
+    }
 }
