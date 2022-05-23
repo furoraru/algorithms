@@ -43,8 +43,4 @@ public class King extends ChessFigure {
                         notABitboard >> 9 | bitboard >> 8 | notHBitboard >> 7;
         return bitmask;
     }
-
-    public int numberOfPossibleMoves(int position) {
-        return 1;
-    }
 }

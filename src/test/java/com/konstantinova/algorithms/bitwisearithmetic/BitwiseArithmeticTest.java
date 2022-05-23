@@ -15,16 +15,16 @@ public class BitwiseArithmeticTest {
     public void RunTests() {
         String inFile;
         String outFile;
-//        for (int testNumber = 0; testNumber <= 9; testNumber++) {
-//            inFile = pathKing + testNumber + ".in";
-//            outFile = pathKing + testNumber + ".out";
-//            System.out.println("Test King #" + testNumber + ": " + RunTest(inFile, outFile, new King()));
-//        }
         for (int testNumber = 0; testNumber <= 9; testNumber++) {
-            inFile = pathKnight + testNumber + ".in";
-            outFile = pathKnight + testNumber + ".out";
-            System.out.println("Test Knight #" + testNumber + ": " + RunTest(inFile, outFile, new Knight()));
+            inFile = pathKing + testNumber + ".in";
+            outFile = pathKing + testNumber + ".out";
+            System.out.println("Test King #" + testNumber + ": " + RunTest(inFile, outFile, new King()));
         }
+//        for (int testNumber = 0; testNumber <= 9; testNumber++) {
+//            inFile = pathKnight + testNumber + ".in";
+//            outFile = pathKnight + testNumber + ".out";
+//            System.out.println("Test Knight #" + testNumber + ": " + RunTest(inFile, outFile, new Knight()));
+//        }
     }
 
     private boolean RunTest(String inFile, String outFile, ChessFigure chessFigure) {
@@ -37,10 +37,12 @@ public class BitwiseArithmeticTest {
 
             fileReader = new FileReader(outFile);
             bufferedReader = new BufferedReader(fileReader);
-            bufferedReader.readLine();
-            long expect = new BigInteger(bufferedReader.readLine()).longValue();
-            long actual = chessFigure.bitmaskOfPossibleMoves(data);
-            return expect == (actual);
+
+            int expectCountOfPossibleMoves = Integer.parseInt(bufferedReader.readLine());
+            long expectMask = new BigInteger(bufferedReader.readLine()).longValue();
+            long actualMask = chessFigure.bitmaskOfPossibleMoves(data);
+            int actualCountOfPossibleMoves = new NumberOfPossibleMoves().popCount(actualMask);
+            return (expectMask == actualMask) & (expectCountOfPossibleMoves == actualCountOfPossibleMoves);
         } catch (IOException exception) {
             exception.printStackTrace();
         }

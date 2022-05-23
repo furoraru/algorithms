@@ -42,7 +42,4 @@ public class Knight extends ChessFigure {
         return bitmask;
     }
 
-    public int numberOfPossibleMoves(int position) {
-        return 0;
-    }
 }

@@ -1,10 +1,10 @@
 package com.konstantinova.algorithms;
 
-import com.konstantinova.algorithms.bitwisearithmetic.King;
+import com.konstantinova.algorithms.bitwisearithmetic.NumberOfPossibleMoves;
 
 public class Main {
     public static void main(String[] args) {
-        King king = new King();
-        System.out.println(king.bitmaskOfPossibleMoves(15));
+        NumberOfPossibleMoves numberOfPossibleMoves = new NumberOfPossibleMoves();
+        System.out.println(numberOfPossibleMoves.popCount(-4593460513685372928L));
     }
 }
