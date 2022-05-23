@@ -41,4 +41,8 @@ public class Knight extends ChessFigure {
                         | notABMask & (bitboard << 10 | bitboard >> 6);
         return bitmask;
     }
+
+    public int numberOfPossibleMoves(int position) {
+        return 0;
+    }
 }

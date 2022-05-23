@@ -28,12 +28,6 @@ see more:
 https://gekomad.github.io/Cinnamon/BitboardCalculator/
  */
 public class King extends ChessFigure {
-
-    public int numberOfPossibleMoves(int position) {
-
-        return 1;
-    }
-
     public long bitmaskOfPossibleMoves(int position) {
         long bitboard = 1L << position;
 
@@ -48,5 +42,9 @@ public class King extends ChessFigure {
                         notABitboard >> 1 | notHBitboard << 1 |
                         notABitboard >> 9 | bitboard >> 8 | notHBitboard >> 7;
         return bitmask;
+    }
+
+    public int numberOfPossibleMoves(int position) {
+        return 1;
     }
 }
