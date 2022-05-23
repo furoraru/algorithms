@@ -9,20 +9,25 @@ import java.math.BigInteger;
 
 public class BitwiseArithmeticTest {
     private static final String pathKing = "src/main/resources/bitwisearithmetic/king/test.";
+    private static final String pathKnight = "src/main/resources/bitwisearithmetic/knight/test.";
 
     @Test
     public void RunTests() {
         String inFile;
         String outFile;
+//        for (int testNumber = 0; testNumber <= 9; testNumber++) {
+//            inFile = pathKing + testNumber + ".in";
+//            outFile = pathKing + testNumber + ".out";
+//            System.out.println("Test King #" + testNumber + ": " + RunTest(inFile, outFile, new King()));
+//        }
         for (int testNumber = 0; testNumber <= 9; testNumber++) {
-            inFile = pathKing + testNumber + ".in";
-            outFile = pathKing + testNumber + ".out";
-            System.out.println("Test #" + testNumber + ": " + RunTest(inFile, outFile));
+            inFile = pathKnight + testNumber + ".in";
+            outFile = pathKnight + testNumber + ".out";
+            System.out.println("Test Knight #" + testNumber + ": " + RunTest(inFile, outFile, new Knight()));
         }
     }
 
-    private boolean RunTest(String inFile, String outFile) {
-        King king = new King();
+    private boolean RunTest(String inFile, String outFile, ChessFigure chessFigure) {
         FileReader fileReader;
         BufferedReader bufferedReader;
         try {
@@ -33,10 +38,9 @@ public class BitwiseArithmeticTest {
             fileReader = new FileReader(outFile);
             bufferedReader = new BufferedReader(fileReader);
             bufferedReader.readLine();
-            BigInteger expect = new BigInteger(bufferedReader.readLine());
-
-            BigInteger actual = king.bitmaskOfPossibleMoves(data);
-            return expect.equals(actual);
+            long expect = new BigInteger(bufferedReader.readLine()).longValue();
+            long actual = chessFigure.bitmaskOfPossibleMoves(data);
+            return expect == (actual);
         } catch (IOException exception) {
             exception.printStackTrace();
         }

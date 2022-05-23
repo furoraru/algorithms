@@ -27,31 +27,26 @@ import java.math.BigInteger;
 see more:
 https://gekomad.github.io/Cinnamon/BitboardCalculator/
  */
-public class King {
+public class King extends ChessFigure {
 
     public int numberOfPossibleMoves(int position) {
 
         return 1;
     }
 
-    public BigInteger bitmaskOfPossibleMoves(int position) {
-        BigInteger bitboard = BigInteger.ONE.shiftLeft(position);
+    public long bitmaskOfPossibleMoves(int position) {
+        long bitboard = 1L << position;
 
-        BigInteger notAMask = new BigInteger("18374403900871474942"); //  first column A exclusion
-        BigInteger notHMask = new BigInteger("9187201950435737471"); //  last column H exclusion
+        long notAMask = new BigInteger("18374403900871474942").longValue(); //  first column A exclusion
+        long notHMask = new BigInteger("9187201950435737471").longValue(); //  last column H exclusion
 
-        BigInteger notABitboard = bitboard.and(notAMask);
-        BigInteger notHBitboard = bitboard.and(notHMask);
+        long notABitboard = bitboard & notAMask;
+        long notHBitboard = bitboard & notHMask;
 
-        BigInteger bitmask =
-                        notABitboard.shiftLeft(7).  or(bitboard.shiftLeft(8))   .or(notHBitboard.shiftLeft(9)).or(
-                        notABitboard.shiftRight(1))                                .or(notHBitboard.shiftLeft(1)).or(
-                        notABitboard.shiftRight(9)).or(bitboard.shiftRight(8))  .or(notHBitboard.shiftRight(7));
-
-//        long bitmask =
-//                        notABitboard << 7 | bitboard << 8 | notHBitboard << 9 |
-//                        notABitboard >> 1 |                 notHBitboard << 1 |
-//                        notABitboard >> 7 | bitboard >> 8 | notHBitboard >> 9;
+        long bitmask =
+                notABitboard << 7 | bitboard << 8 | notHBitboard << 9 |
+                        notABitboard >> 1 | notHBitboard << 1 |
+                        notABitboard >> 9 | bitboard >> 8 | notHBitboard >> 7;
         return bitmask;
     }
 }
