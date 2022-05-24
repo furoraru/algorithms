@@ -1,10 +1,10 @@
 package com.konstantinova.algorithms;
 
-import com.konstantinova.algorithms.bitwisearithmetic.Rook;
+import com.konstantinova.algorithms.bitwisearithmetic.Bishop;
 
 public class Main {
     public static void main(String[] args) {
-        Rook rook = new Rook();
-        System.out.println(rook.bitmaskOfPossibleMoves(27));
+        Bishop bishop = new Bishop();
+        System.out.println(bishop.bitmaskOfPossibleMoves(41));
     }
 }
