@@ -11,6 +11,8 @@ public class BitwiseArithmeticTest {
     private static final String pathKing = "src/main/resources/bitwisearithmetic/king/test.";
     private static final String pathKnight = "src/main/resources/bitwisearithmetic/knight/test.";
     private static final String pathRook = "src/main/resources/bitwisearithmetic/rook/test.";
+    private static final String pathBishop = "src/main/resources/bitwisearithmetic/bishop/test.";
+    private static final String PathQueen = "src/main/resources/bitwisearithmetic/queen/test.";
 
     @Test
     public void RunTests() {
@@ -26,10 +28,20 @@ public class BitwiseArithmeticTest {
 //            outFile = pathKnight + testNumber + ".out";
 //            System.out.println("Test Knight #" + testNumber + ": " + RunTest(inFile, outFile, new Knight()));
 //        }
+//        for (int testNumber = 0; testNumber <= 9; testNumber++) {
+//            inFile = pathRook + testNumber + ".in";
+//            outFile = pathRook + testNumber + ".out";
+//            System.out.println("Test Rook #" + testNumber + ": " + RunTest(inFile, outFile, new Rook()));
+//        }
+//        for (int testNumber = 0; testNumber <= 9; testNumber++) {
+//            inFile = pathBishop + testNumber + ".in";
+//            outFile = pathBishop + testNumber + ".out";
+//            System.out.println("Test Bishop #" + testNumber + ": " + RunTest(inFile, outFile, new Bishop()));
+//        }
         for (int testNumber = 0; testNumber <= 9; testNumber++) {
-            inFile = pathRook + testNumber + ".in";
-            outFile = pathRook + testNumber + ".out";
-            System.out.println("Test Rook #" + testNumber + ": " + RunTest(inFile, outFile, new Rook()));
+            inFile = PathQueen + testNumber + ".in";
+            outFile = PathQueen + testNumber + ".out";
+            System.out.println("Test Queen #" + testNumber + ": " + RunTest(inFile, outFile, new Queen()));
         }
     }
 
