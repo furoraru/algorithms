@@ -1,10 +1,10 @@
 package com.konstantinova.algorithms;
 
-import com.konstantinova.algorithms.bitwisearithmetic.NumberOfPossibleMoves;
+import com.konstantinova.algorithms.bitwisearithmetic.Rook;
 
 public class Main {
     public static void main(String[] args) {
-        NumberOfPossibleMoves numberOfPossibleMoves = new NumberOfPossibleMoves();
-        System.out.println(numberOfPossibleMoves.popCount(-4593460513685372928L));
+        Rook rook = new Rook();
+        System.out.println(rook.bitmaskOfPossibleMoves(60));
     }
 }
