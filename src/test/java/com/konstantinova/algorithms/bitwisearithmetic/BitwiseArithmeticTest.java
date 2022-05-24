@@ -59,7 +59,7 @@ public class BitwiseArithmeticTest {
             int expectCountOfPossibleMoves = Integer.parseInt(bufferedReader.readLine());
             long expectMask = new BigInteger(bufferedReader.readLine()).longValue();
             long actualMask = chessFigure.bitmaskOfPossibleMoves(data);
-            int actualCountOfPossibleMoves = new NumberOfPossibleMoves().popCount2(actualMask);
+            int actualCountOfPossibleMoves = new NumberOfPossibleMoves().popCount3(actualMask);
 
             return (expectMask == actualMask) & (expectCountOfPossibleMoves == actualCountOfPossibleMoves);
         } catch (IOException exception) {
