@@ -10,21 +10,27 @@ import java.math.BigInteger;
 public class BitwiseArithmeticTest {
     private static final String pathKing = "src/main/resources/bitwisearithmetic/king/test.";
     private static final String pathKnight = "src/main/resources/bitwisearithmetic/knight/test.";
+    private static final String pathRook = "src/main/resources/bitwisearithmetic/rook/test.";
 
     @Test
     public void RunTests() {
         String inFile;
         String outFile;
-        for (int testNumber = 0; testNumber <= 9; testNumber++) {
-            inFile = pathKing + testNumber + ".in";
-            outFile = pathKing + testNumber + ".out";
-            System.out.println("Test King #" + testNumber + ": " + RunTest(inFile, outFile, new King()));
-        }
+//        for (int testNumber = 0; testNumber <= 9; testNumber++) {
+//            inFile = pathKing + testNumber + ".in";
+//            outFile = pathKing + testNumber + ".out";
+//            System.out.println("Test King #" + testNumber + ": " + RunTest(inFile, outFile, new King()));
+//        }
 //        for (int testNumber = 0; testNumber <= 9; testNumber++) {
 //            inFile = pathKnight + testNumber + ".in";
 //            outFile = pathKnight + testNumber + ".out";
 //            System.out.println("Test Knight #" + testNumber + ": " + RunTest(inFile, outFile, new Knight()));
 //        }
+        for (int testNumber = 0; testNumber <= 9; testNumber++) {
+            inFile = pathRook + testNumber + ".in";
+            outFile = pathRook + testNumber + ".out";
+            System.out.println("Test Rook #" + testNumber + ": " + RunTest(inFile, outFile, new Rook()));
+        }
     }
 
     private boolean RunTest(String inFile, String outFile, ChessFigure chessFigure) {
