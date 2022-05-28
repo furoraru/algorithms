@@ -10,4 +10,6 @@ public interface IArray<T> {
     void add(T item, int index);
 
     T remove(int index);
+
+    boolean isEmpty();
 }

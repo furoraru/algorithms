@@ -50,6 +50,11 @@ public class SingleArray<T> implements IArray<T> {
         return removedElement;
     }
 
+    @Override
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
     private void resize() {
         T[] newArray = (T[]) new Object[size() + 1];
         System.arraycopy(array, 0, newArray, 0, size());
