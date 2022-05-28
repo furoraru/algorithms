@@ -26,8 +26,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
+            <version>4.13.2</version>
         </dependency>
     </dependencies>
 
