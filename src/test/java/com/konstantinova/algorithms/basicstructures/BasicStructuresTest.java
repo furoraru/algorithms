@@ -17,10 +17,16 @@ public class BasicStructuresTest {
 
     @Test
     public void RunTests() {
-        fillArrays();
+        //addToTheBeginning();
+        //addToTheRand();
+        //addToTheEnding();
+        //fillArrays();
+        //getFromTheBeginning();
+        //getFromTheRand();
+        //getFromTheEnding();
         //deleteFromTheBeginning();
         //deleteFromTheRand();
-       deleteFromTheEnding();
+        //deleteFromTheEnding();
     }
 
     public void addToTheBeginning() {
