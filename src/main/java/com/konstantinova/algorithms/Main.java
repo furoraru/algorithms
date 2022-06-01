@@ -1,17 +1,18 @@
 package com.konstantinova.algorithms;
 
-import com.konstantinova.algorithms.basicstructures.IArray;
-import com.konstantinova.algorithms.basicstructures.MatrixArray;
+import com.konstantinova.algorithms.simplesort.ShellSort;
+
+import java.util.Arrays;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        IArray<Integer> matrix = new MatrixArray<>();
-        matrix.add(1);
-        matrix.add(2);
-        System.out.println(1);
-        matrix.add(3, 1);
-        System.out.println(2);
-        matrix.remove(1);
-        System.out.println(3);
+        Random random = new Random();
+        int[] notSortedArray = random.ints(10, 10, 100).toArray();
+        System.out.println(Arrays.toString(notSortedArray));
+
+        ShellSort shellSort = new ShellSort();
+        int[] sortedArray = shellSort.shellSort(notSortedArray);
+        System.out.println(Arrays.toString(sortedArray));
     }
 }
