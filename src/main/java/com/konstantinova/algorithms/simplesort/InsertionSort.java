@@ -2,17 +2,18 @@ package com.konstantinova.algorithms.simplesort;
 
 public class InsertionSort {
     public int[] insertionSort(int[] array) {
-        int p;
-        int pivot;
+        int temp;
         int N = array.length;
         for (int k = 1; k < N; k++) {
-            pivot = array[k];
-            p = k - 1;
-            while (p >= 0 && pivot < array[p]) {
-                array[p + 1] = array[p];
-                p--;
+            for (int p = k; p > 0; p--) {
+                // если предыдущий больше текущего
+                if (array[p - 1] > array[p]) {
+                    // swap
+                    temp = array[p - 1];
+                    array[p - 1] = array[p];
+                    array[p] = temp;
+                }
             }
-            array[p + 1] = pivot;
         }
         return array;
     }
