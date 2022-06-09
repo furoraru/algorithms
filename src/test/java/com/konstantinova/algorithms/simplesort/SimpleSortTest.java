@@ -11,10 +11,10 @@ public class SimpleSortTest {
     @Test
     public void RunTests() {
         Random random = new Random();
-        int[] notSortedArray = random.ints(10000, 1, 10000).toArray();
+        int[] notSortedArray = random.ints(1_000_000, 1, 10_000).toArray();
         int arrayLength = notSortedArray.length;
-        bubbleSort(Arrays.copyOf(notSortedArray, arrayLength));
-        optimizedBubbleSort(Arrays.copyOf(notSortedArray, arrayLength));
+       // bubbleSort(Arrays.copyOf(notSortedArray, arrayLength));
+        //optimizedBubbleSort(Arrays.copyOf(notSortedArray, arrayLength));
         insertionSort(Arrays.copyOf(notSortedArray, arrayLength));
         insertionShiftSort(Arrays.copyOf(notSortedArray, arrayLength));
         shellSort(Arrays.copyOf(notSortedArray, arrayLength));
