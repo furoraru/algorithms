@@ -47,7 +47,7 @@ public class SimpleSortFileTest {
                     .mapToInt(Integer::parseInt).toArray();
 
             int[] sortedArray = bubbleSort.bubbleSort(notSortedArray);
-            return expectedArray == sortedArray;
+            return Arrays.equals(expectedArray, sortedArray);
         } catch (IOException exception) {
             exception.printStackTrace();
         }
