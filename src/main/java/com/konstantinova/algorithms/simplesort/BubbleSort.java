@@ -3,8 +3,8 @@ package com.konstantinova.algorithms.simplesort;
 /*
 Visual: https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
  */
-public class BubbleSort {
-    public int[] bubbleSort(int[] array) {
+public class BubbleSort extends Sort {
+    public int[] sort(int[] array) {
         int temp;
         int N = array.length;
         for (int k = 0; k < N - 1; k++) {
@@ -21,7 +21,7 @@ public class BubbleSort {
     }
 
     // Если не было обменов, значит все элементы на своих местах -> массив остортирован
-    public int[] optimizedBubbleSort(int[] array) {
+    public int[] optimizedSort(int[] array) {
         int temp;
         int N = array.length;
         boolean swapped;

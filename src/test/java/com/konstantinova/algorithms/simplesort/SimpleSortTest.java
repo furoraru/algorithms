@@ -22,31 +22,31 @@ public class SimpleSortTest {
 
     private void bubbleSort(int[] notSortedArray) {
         Instant startTime = Instant.now();
-        int[] sortedArray = new BubbleSort().bubbleSort(notSortedArray);
+        int[] sortedArray = new BubbleSort().sort(notSortedArray);
         System.out.println("\nTime bubble sort: " + Duration.between(startTime, Instant.now()).toMillis() + "ms");
     }
 
     private void optimizedBubbleSort(int[] notSortedArray) {
         Instant startTime = Instant.now();
-        int[] sortedArray = new BubbleSort().optimizedBubbleSort(notSortedArray);
+        int[] sortedArray = new BubbleSort().optimizedSort(notSortedArray);
         System.out.println("\nTime bubble OPTIMIZED sort: " + Duration.between(startTime, Instant.now()).toMillis() + "ms");
     }
 
     private void insertionSort(int[] notSortedArray) {
         Instant startTime = Instant.now();
-        int[] sortedArray = new InsertionSort().insertionSort(notSortedArray);
+        int[] sortedArray = new InsertionSort().sort(notSortedArray);
         System.out.println("\nTime insertion sort: " + Duration.between(startTime, Instant.now()).toMillis() + "ms");
     }
 
     private void insertionShiftSort(int[] notSortedArray) {
         Instant startTime = Instant.now();
-        int[] sortedArray = new InsertionSort().insertionShiftSort(notSortedArray);
+        int[] sortedArray = new InsertionSort().optimizedSort(notSortedArray);
         System.out.println("\nTime insertion SHIFT sort: " + Duration.between(startTime, Instant.now()).toMillis() + "ms");
     }
 
     private void shellSort(int[] notSortedArray) {
         Instant startTime = Instant.now();
-        int[] sortedArray = new ShellSort().shellSort(notSortedArray);
+        int[] sortedArray = new ShellSort().sort(notSortedArray);
         System.out.println("\nTime shell sort: " + Duration.between(startTime, Instant.now()).toMillis() + "ms");
     }
 }
