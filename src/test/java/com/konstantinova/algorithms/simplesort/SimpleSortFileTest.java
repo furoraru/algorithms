@@ -5,6 +5,8 @@ import org.junit.Test;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Arrays;
 
 public class SimpleSortFileTest {
@@ -17,10 +19,11 @@ public class SimpleSortFileTest {
     public void RunTests() {
         String inFile;
         String outFile;
-        for (int testNumber = 0; testNumber <= 1; testNumber++) {
+        for (int testNumber = 0; testNumber <= 7; testNumber++) {
             inFile = randomPath + testNumber + ".in";
             outFile = randomPath + testNumber + ".out";
-             System.out.println("Test #" + testNumber + ": " + RunTest(inFile, outFile, new BubbleSort()));
+            System.out.println("================================");
+            System.out.println("Test #" + testNumber + ": " + RunTest(inFile, outFile, new BubbleSort()));
             // System.out.println("Test #" + testNumber + ": " + RunTest(inFile, outFile, new InsertionSort()));
             //System.out.println("Test #" + testNumber + ": " + RunTest(inFile, outFile, new ShellSort()));
         }
@@ -36,7 +39,6 @@ public class SimpleSortFileTest {
             int arrayLength = Integer.parseInt(bufferedReader.readLine());
             int[] notSortedArray = Arrays.stream(bufferedReader.readLine().split(" "))
                     .mapToInt(Integer::parseInt).toArray();
-            System.out.println(Arrays.toString(notSortedArray));
 
             fileReader = new FileReader(outFile);
             bufferedReader = new BufferedReader(fileReader);
@@ -44,13 +46,17 @@ public class SimpleSortFileTest {
             int[] expectedArray = Arrays.stream(bufferedReader.readLine().split(" "))
                     .mapToInt(Integer::parseInt).toArray();
 
+            Instant startTime = Instant.now();
             int[] sortedArraySort = sort.sort(Arrays.copyOf(notSortedArray, arrayLength));
-            System.out.println(Arrays.toString(sortedArraySort));
+            System.out.println("Time sort: " + Duration.between(startTime, Instant.now()).toMillis() + "ms");
+
             boolean optimizedSort = true;
             if (!(sort instanceof ShellSort)) {
+                startTime = Instant.now();
                 int[] sortedArrayOptimizedSort = sort.optimizedSort(Arrays.copyOf(notSortedArray, arrayLength));
+                System.out.println("Time optimized sort: " + Duration.between(startTime, Instant.now()).toMillis() + "ms");
+
                 optimizedSort = Arrays.equals(expectedArray, sortedArrayOptimizedSort);
-                System.out.println(Arrays.toString(sortedArrayOptimizedSort));
             }
             return Arrays.equals(expectedArray, sortedArraySort) && optimizedSort;
         } catch (IOException exception) {
