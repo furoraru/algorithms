@@ -24,7 +24,7 @@ public class SimpleSortFileTest {
             inFile = path + testNumber + ".in";
             outFile = path + testNumber + ".out";
             System.out.println("================================");
-            System.out.println("Test #" + testNumber + ": " + RunTest(inFile, outFile, new BubbleSort()));
+            System.out.println("\nTest #" + testNumber + ": " + RunTest(inFile, outFile, new BubbleSort()));
             // System.out.println("Test #" + testNumber + ": " + RunTest(inFile, outFile, new InsertionSort()));
             //System.out.println("Test #" + testNumber + ": " + RunTest(inFile, outFile, new ShellSort()));
         }
@@ -38,6 +38,7 @@ public class SimpleSortFileTest {
             bufferedReader = new BufferedReader(fileReader);
 
             int arrayLength = Integer.parseInt(bufferedReader.readLine());
+            System.out.printf("Array length: %d", arrayLength);
             int[] notSortedArrayForSort = Arrays.stream(bufferedReader.readLine().split(" "))
                     .mapToInt(Integer::parseInt).toArray();
             int[] notSortedArrayForOptimizedSort = Arrays.copyOf(notSortedArrayForSort, arrayLength);
@@ -51,14 +52,16 @@ public class SimpleSortFileTest {
             Instant startTime = Instant.now();
             sort.sort(Arrays.copyOf(notSortedArrayForSort, arrayLength));
             Instant endTime = Instant.now();
-            System.out.println("Time sort: " + Duration.between(startTime, endTime).toMillis() + "ms");
+            System.out.printf("\nTime %s: %d ms",
+                    sort.getClass().getSimpleName(), Duration.between(startTime, endTime).toMillis());
 
             boolean optimizedSort = true;
             if (!(sort instanceof ShellSort)) {
                 startTime = Instant.now();
                 sort.optimizedSort(Arrays.copyOf(notSortedArrayForOptimizedSort, arrayLength));
                 endTime = Instant.now();
-                System.out.println("Time optimized sort: " + Duration.between(startTime, endTime).toMillis() + "ms");
+                System.out.printf("\nTime optimized %s: %d ms",
+                        sort.getClass().getSimpleName(), Duration.between(startTime, endTime).toMillis());
 
                 optimizedSort = Arrays.equals(expectedArray, notSortedArrayForOptimizedSort);
             }
