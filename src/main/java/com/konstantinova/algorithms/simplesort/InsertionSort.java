@@ -1,7 +1,7 @@
 package com.konstantinova.algorithms.simplesort;
 
 public class InsertionSort extends Sort {
-    public int[] sort(int[] array) {
+    public void sort(int[] array) {
         int temp;
         int N = array.length;
         for (int k = 1; k < N; k++) {
@@ -15,10 +15,9 @@ public class InsertionSort extends Sort {
                 }
             }
         }
-        return array;
     }
 
-    public int[] optimizedSort(int[] array) {
+    public void optimizedSort(int[] array) {
         int temp;
         int N = array.length;
         for (int k = 1; k < N; k++) {
@@ -40,8 +39,6 @@ public class InsertionSort extends Sort {
                     array[p] = temp;
                 }
             }
-
         }
-        return array;
     }
 }

@@ -38,8 +38,9 @@ public class SimpleSortFileTest {
             bufferedReader = new BufferedReader(fileReader);
 
             int arrayLength = Integer.parseInt(bufferedReader.readLine());
-            int[] notSortedArray = Arrays.stream(bufferedReader.readLine().split(" "))
+            int[] notSortedArrayForSort = Arrays.stream(bufferedReader.readLine().split(" "))
                     .mapToInt(Integer::parseInt).toArray();
+            int[] notSortedArrayForOptimizedSort = Arrays.copyOf(notSortedArrayForSort, arrayLength);
 
             fileReader = new FileReader(outFile);
             bufferedReader = new BufferedReader(fileReader);
@@ -48,18 +49,20 @@ public class SimpleSortFileTest {
                     .mapToInt(Integer::parseInt).toArray();
 
             Instant startTime = Instant.now();
-            int[] sortedArraySort = sort.sort(Arrays.copyOf(notSortedArray, arrayLength));
-            System.out.println("Time sort: " + Duration.between(startTime, Instant.now()).toMillis() + "ms");
+            sort.sort(Arrays.copyOf(notSortedArrayForSort, arrayLength));
+            Instant endTime = Instant.now();
+            System.out.println("Time sort: " + Duration.between(startTime, endTime).toMillis() + "ms");
 
             boolean optimizedSort = true;
             if (!(sort instanceof ShellSort)) {
                 startTime = Instant.now();
-                int[] sortedArrayOptimizedSort = sort.optimizedSort(Arrays.copyOf(notSortedArray, arrayLength));
-                System.out.println("Time optimized sort: " + Duration.between(startTime, Instant.now()).toMillis() + "ms");
+                sort.optimizedSort(Arrays.copyOf(notSortedArrayForOptimizedSort, arrayLength));
+                endTime = Instant.now();
+                System.out.println("Time optimized sort: " + Duration.between(startTime, endTime).toMillis() + "ms");
 
-                optimizedSort = Arrays.equals(expectedArray, sortedArrayOptimizedSort);
+                optimizedSort = Arrays.equals(expectedArray, notSortedArrayForOptimizedSort);
             }
-            return Arrays.equals(expectedArray, sortedArraySort) && optimizedSort;
+            return Arrays.equals(expectedArray, notSortedArrayForSort) && optimizedSort;
         } catch (IOException exception) {
             exception.printStackTrace();
         }

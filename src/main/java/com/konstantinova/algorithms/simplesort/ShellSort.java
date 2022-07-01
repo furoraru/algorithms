@@ -1,7 +1,7 @@
 package com.konstantinova.algorithms.simplesort;
 
 public class ShellSort extends Sort {
-    public int[] sort(int[] array) {
+    public void sort(int[] array) {
         int j;
         int temp;
         int N = array.length;
@@ -16,11 +16,9 @@ public class ShellSort extends Sort {
                 array[j] = temp;
             }
         }
-        return array;
     }
 
     @Override
-    public int[] optimizedSort(int[] array) {
-        return new int[0];
+    public void optimizedSort(int[] array) {
     }
 }

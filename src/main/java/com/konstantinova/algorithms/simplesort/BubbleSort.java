@@ -4,7 +4,7 @@ package com.konstantinova.algorithms.simplesort;
 Visual: https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
  */
 public class BubbleSort extends Sort {
-    public int[] sort(int[] array) {
+    public void sort(int[] array) {
         int temp;
         int N = array.length;
         for (int k = 0; k < N - 1; k++) {
@@ -17,11 +17,10 @@ public class BubbleSort extends Sort {
                 }
             }
         }
-        return array;
     }
 
     // Если не было обменов, значит все элементы на своих местах -> массив остортирован
-    public int[] optimizedSort(int[] array) {
+    public void optimizedSort(int[] array) {
         int temp;
         int N = array.length;
         boolean swapped;
@@ -38,6 +37,5 @@ public class BubbleSort extends Sort {
             }
             if (!swapped) break;
         }
-        return array;
     }
 }
