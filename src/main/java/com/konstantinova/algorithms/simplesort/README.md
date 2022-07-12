@@ -28,20 +28,22 @@ InsertionSort|0|0|0|3|49|3494|338173|-
 InsertionShiftSort|0|0|0|1|11|1074|76353|-
 ShellSort|0|0|0|1|3|14|79|764
 
+sorted
+
 rsc/2.sorted|1, ms|10, ms|100, ms|1_000, ms|10_000, ms|100_000, ms|1_000_000, ms|10_000_000, ms
 ---:|---:|---:|---:|---:|---:|---:|---:|---:
-BubbleSort|
-OptimizedBubbleSort|
+BubbleSort|0|0|0|2|59|1971|200588|-
+OptimizedBubbleSort|0|0|0|2|58|2233|234185|-
+InsertionSort|0|0|0|2|45|1789|167291|-
+InsertionShiftSort|0|0|0|0|5|89|5356|_
+ShellSort|0|0|0|0|4|10|125|1729
 
-InsertionSort|
-InsertionShiftSort|
-ShellSort|
+revers
 
 rsc/3.revers|1, ms|10, ms|100, ms|1_000, ms|10_000, ms|100_000, ms|1_000_000, ms|10_000_000, ms
 ---:|---:|---:|---:|---:|---:|---:|---:|---:
 BubbleSort|
 OptimizedBubbleSort|
-
 InsertionSort|
 InsertionShiftSort|
 ShellSort|
