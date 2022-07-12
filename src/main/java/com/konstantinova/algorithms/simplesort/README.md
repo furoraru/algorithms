@@ -35,15 +35,15 @@ rsc/2.sorted|1, ms|10, ms|100, ms|1_000, ms|10_000, ms|100_000, ms|1_000_000, ms
 BubbleSort|0|0|0|2|59|1971|200588|-
 OptimizedBubbleSort|0|0|0|2|58|2233|234185|-
 InsertionSort|0|0|0|2|45|1789|167291|-
-InsertionShiftSort|0|0|0|0|5|89|5356|_
+InsertionShiftSort|0|0|0|0|5|89|5356|-
 ShellSort|0|0|0|0|4|10|125|1729
 
 revers
 
 rsc/3.revers|1, ms|10, ms|100, ms|1_000, ms|10_000, ms|100_000, ms|1_000_000, ms|10_000_000, ms
 ---:|---:|---:|---:|---:|---:|---:|---:|---:
-BubbleSort|
-OptimizedBubbleSort|
-InsertionSort|
-InsertionShiftSort|
-ShellSort|
+BubbleSort|0|0|0|4|29|2703|270121|-
+OptimizedBubbleSort|0|0|0|3|26|2749|269317|-
+InsertionSort|0|0|0|3|60|5842|598888|-
+InsertionShiftSort|0|0|0|4|79|4078|451973|-
+ShellSort|0|0|0|0|1|6|46|517

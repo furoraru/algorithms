@@ -19,14 +19,12 @@ public class SimpleSortFileTest {
     public void RunTests() {
         String inFile;
         String outFile;
-        String path = randomPath;
+        String path = reversPath;
         for (int testNumber = 0; testNumber <= 7; testNumber++) {
             inFile = path + testNumber + ".in";
             outFile = path + testNumber + ".out";
             System.out.println("================================");
-            System.out.println("\nTest #" + testNumber + ": " + RunTest(inFile, outFile, new BubbleSort()));
-            // System.out.println("Test #" + testNumber + ": " + RunTest(inFile, outFile, new InsertionSort()));
-            //System.out.println("Test #" + testNumber + ": " + RunTest(inFile, outFile, new ShellSort()));
+            System.out.println("\nTest #" + testNumber + ": " + RunTest(inFile, outFile, new ShellSort()));
         }
     }
 
