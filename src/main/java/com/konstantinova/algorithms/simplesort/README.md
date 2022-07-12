@@ -10,12 +10,11 @@ ShellSort|0|0|3|17|167
 
 rsc/0.random|1, ms|10, ms|100, ms|1_000, ms|10_000, ms|100_000, ms|1_000_000, ms|10_000_000, ms
 ---:|---:|---:|---:|---:|---:|---:|---:|---:
-BubbleSort|0|0|0|4|-
-OptimizedBubbleSort|0|0|0|3|-
-
-InsertionSort|0|3|51|4811|481939
-InsertionShiftSort|0|2|26|782|5719
-ShellSort|0|0|3|15|175
+BubbleSort|0|0|0|4|106|12920|-|-
+OptimizedBubbleSort|0|0|0|3|116|13035|-|-
+InsertionSort|0|0|0|3|49|3691|357487|-
+InsertionShiftSort|0|0|0|2|53|2346|236888|-
+ShellSort|0|0|0|0|4|23|166|2646
 
 rsc/1.digits|1, ms|10, ms|100, ms|1_000, ms|10_000, ms|100_000, ms|1_000_000, ms|10_000_000, ms
 ---:|---:|---:|---:|---:|---:|---:|---:|---:
