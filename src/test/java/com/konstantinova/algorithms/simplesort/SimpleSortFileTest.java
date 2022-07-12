@@ -50,7 +50,7 @@ public class SimpleSortFileTest {
                     .mapToInt(Integer::parseInt).toArray();
 
             Instant startTime = Instant.now();
-            sort.sort(Arrays.copyOf(notSortedArrayForSort, arrayLength));
+            sort.sort(notSortedArrayForSort);
             Instant endTime = Instant.now();
             System.out.printf("\nTime %s: %d ms",
                     sort.getClass().getSimpleName(), Duration.between(startTime, endTime).toMillis());
@@ -58,7 +58,7 @@ public class SimpleSortFileTest {
             boolean optimizedSort = true;
             if (!(sort instanceof ShellSort)) {
                 startTime = Instant.now();
-                sort.optimizedSort(Arrays.copyOf(notSortedArrayForOptimizedSort, arrayLength));
+                sort.optimizedSort(notSortedArrayForOptimizedSort);
                 endTime = Instant.now();
                 System.out.printf("\nTime optimized %s: %d ms",
                         sort.getClass().getSimpleName(), Duration.between(startTime, endTime).toMillis());
