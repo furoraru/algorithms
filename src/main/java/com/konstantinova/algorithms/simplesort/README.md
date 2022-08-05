@@ -19,6 +19,8 @@ OptimizedBubbleSort|0|0|0|3|116|13035|-|-
 InsertionSort|0|0|0|3|49|3691|357487|-
 InsertionShiftSort|0|0|0|2|53|2346|236888|-
 ShellSort|0|0|0|0|4|23|166|2646
+SelectionSort|0|0|0|3|43|3212|229968|-
+HeapSort|0|0|0|0|1|13|148|2673
 
 digits
 

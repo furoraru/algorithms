@@ -19,12 +19,12 @@ public class SimpleSortFileTest {
     public void RunTests() {
         String inFile;
         String outFile;
-        String path = reversPath;
+        String path = randomPath;
         for (int testNumber = 0; testNumber <= 7; testNumber++) {
             inFile = path + testNumber + ".in";
             outFile = path + testNumber + ".out";
             System.out.println("================================");
-            System.out.println("\nTest #" + testNumber + ": " + RunTest(inFile, outFile, new ShellSort()));
+            System.out.println("\nTest #" + testNumber + ": " + RunTest(inFile, outFile, new HeapSort()));
         }
     }
 
@@ -54,7 +54,7 @@ public class SimpleSortFileTest {
                     sort.getClass().getSimpleName(), Duration.between(startTime, endTime).toMillis());
 
             boolean optimizedSort = true;
-            if (!(sort instanceof ShellSort)) {
+            if (!(sort instanceof ShellSort) && !(sort instanceof HeapSort) && !(sort instanceof SelectionSort)) {
                 startTime = Instant.now();
                 sort.optimizedSort(notSortedArrayForOptimizedSort);
                 endTime = Instant.now();
