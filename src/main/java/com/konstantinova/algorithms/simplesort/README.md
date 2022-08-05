@@ -55,3 +55,5 @@ OptimizedBubbleSort|0|0|0|3|26|2749|269317|-
 InsertionSort|0|0|0|3|60|5842|598888|-
 InsertionShiftSort|0|0|0|4|79|4078|451973|-
 ShellSort|0|0|0|0|1|6|46|517
+SelectionSort|0|0|0|2|91|8894|-|-
+HeapSort|0|0|0|0|0|10|84|960

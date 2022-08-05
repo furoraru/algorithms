@@ -19,7 +19,7 @@ public class SimpleSortFileTest {
     public void RunTests() {
         String inFile;
         String outFile;
-        String path = sortedPath;
+        String path = reversPath;
         for (int testNumber = 0; testNumber <= 7; testNumber++) {
             inFile = path + testNumber + ".in";
             outFile = path + testNumber + ".out";
